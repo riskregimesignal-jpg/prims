@@ -1,7 +1,7 @@
 use criterion::{BatchSize, Criterion, black_box, criterion_group, criterion_main};
 use prims::blockchain::hash::calculate_merkle_root;
 use prims::blockchain::types::{
-    Block, BlockHeader, Transaction, TransactionType, DEFAULT_SHARD_ID,
+    Block, BlockHeader, DEFAULT_SHARD_ID, Transaction, TransactionType,
 };
 use prims::storage::RocksDbStorage;
 use std::time::{SystemTime, UNIX_EPOCH};

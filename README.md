@@ -74,3 +74,35 @@ cargo run --bin prims
 - API JSON-RPC : `docs/api_rpc.md`
 - Setup de confidentialite : `docs/privacy_trusted_setup.md`
 
+
+## Site web testnet
+
+Le binaire `prims-explorer` fournit un site web simple pour le testnet Prims.
+
+### Lancement
+
+```bash
+cargo run --bin prims-explorer
+```
+
+Le site écoute par défaut sur `127.0.0.1:7003` et utilise l'endpoint RPC `http://127.0.0.1:7002`.
+
+Variables d'environnement utiles :
+- `PRIMS_EXPLORER_ADDRESS`
+- `PRIMS_RPC_URL`
+- `PRIMS_FAUCET_AMOUNT`
+- `PRIMS_FAUCET_SOURCE_SHARD`
+- `PRIMS_FAUCET_DESTINATION_SHARD`
+
+### Faucet
+
+Le faucet est désactivé par défaut.
+
+Pour l'activer, définir soit :
+- `PRIMS_SECRET_KEY_FILE`
+- `PRIMS_SECRET_KEY_HEX`
+
+Important :
+- ne jamais commiter de clé privée dans le dépôt
+- préférer un fichier local hors dépôt pour la clé du faucet
+- ne jamais partager mot de passe, token GitHub ou fichier chiffré sensible

@@ -1,6 +1,6 @@
 # Journal d'avancement de Prims
 
-Dernière mise à jour : 26 mars 2026
+Dernière mise à jour : 27 mars 2026
 
 ## Étapes terminées
 - [x] 0.1 : Installation de Rust, Git, VS Code (vérifié)
@@ -120,16 +120,30 @@ Dernière mise à jour : 26 mars 2026
 
 - [x] 9.13 : sécurité Wasm renforcée avec validation ciblée des contrats malveillants ; le runtime stoppe correctement une boucle infinie via le fuel (`wasm_execution_traps_when_fuel_is_exhausted`), annule bien les écritures de storage quand le fuel est épuisé pendant `execute_contract_call` (`execute_contract_call_rolls_back_storage_when_fuel_is_exhausted`), et rejette désormais explicitement un accès mémoire hors limites avec rollback atomique grâce au nouveau test `execute_contract_call_rolls_back_storage_on_out_of_bounds_memory_access` ajouté dans `src/vm/mod.rs` ; validations réussies avec `cargo fmt --all`, `cargo fmt --all --check`, `cargo test wasm_execution_traps_when_fuel_is_exhausted -- --nocapture`, `cargo test execute_contract_call_rolls_back_storage_when_fuel_is_exhausted -- --nocapture` et `cargo test execute_contract_call_rolls_back_storage_on_out_of_bounds_memory_access -- --nocapture` (trois tests ciblés verts, `1 passed; 0 failed` chacun).
 
-- [x] 10.1 : workflow GitHub Actions multi-OS ajouté dans `.github/workflows/build.yml` pour automatiser les builds sur `ubuntu-latest`, `macos-latest` et `windows-latest`, avec déclencheurs `push`, `pull_request` et `workflow_dispatch` sur `main`, installation de Rust stable via `dtolnay/rust-toolchain@stable`, cache de build via `Swatinem/rust-cache@v2`, et compilation `cargo build --locked --all-targets` ; validations locales réussies avec inspection du workflow, vérification de la matrice des 3 OS, et validation syntaxique YAML par Ruby (`YAML OK: .github/workflows/build.yml`) ; l’exécution réelle sur GitHub reste à confirmer après push sur le dépôt distant.
+- [x] 10.1 : workflow GitHub Actions multi-OS ajouté dans `.github/workflows/build.yml` pour automatiser les builds sur `ubuntu-latest`, `macos-latest` et `windows-latest`, avec déclencheurs `push`, `pull_request` et `workflow_dispatch` sur `main`, installation de Rust stable via `dtolnay/rust-toolchain@stable`, cache de build via `Swatinem/rust-cache@v2`, et compilation `cargo build --locked --all-targets` ; validations locales réussies avec inspection du workflow, vérification de la matrice des 3 OS et validation syntaxique YAML par Ruby (`YAML OK: .github/workflows/build.yml`) ; un premier run GitHub a révélé un décalage du benchmark `benches/storage_benchmark.rs` avec les structures `Transaction` / `Block` actuelles ainsi qu’une mise à jour nécessaire de `rustls-webpki` dans `Cargo.lock`, puis les correctifs ont été poussés ; validation réelle obtenue sur GitHub Actions avec succès des trois jobs `Build (macos-latest)`, `Build (windows-latest)` et `Build (ubuntu-latest)` ; la CI GitHub a ensuite été entièrement remise au vert avec succès du workflow `Security Audit`.
+
+- [x] 10.2 : site web testnet simple finalisé dans `src/bin/prims-explorer.rs` avec page d accueil `Prims Testnet`, section instructions, recherche de solde, route `POST /faucet`, activation conditionnelle du faucet via `PRIMS_SECRET_KEY_FILE` ou `PRIMS_SECRET_KEY_HEX`, paramètres `PRIMS_FAUCET_AMOUNT` / `PRIMS_FAUCET_SOURCE_SHARD` / `PRIMS_FAUCET_DESTINATION_SHARD`, documentation ajoutée au `README.md`, validations réussies avec `cargo fmt`, `cargo fmt --check`, `cargo build --bin prims-explorer`, démarrage HTTP sur `127.0.0.1:7003`, vérification de la page d accueil et refus sécurisé du faucet sans clé.
 
 ## Prochaine étape
-10.2 – Créer un site web simple pour le testnet avec instructions, faucet (service web qui distribue des tokens de test).
+10.3 – Lancer un seed node public.
 
 ## Notes importantes
-- Sauvegardes locales créées avant l’étape 10.1 :
-  - `~/Documents/prims_sources/step-10.1/.github.before_step_10_1`
-- Étape 10.1 implémentée localement : ajout de `.github/workflows/build.yml` pour builder automatiquement Prims sur Linux, macOS et Windows avec une matrice GitHub Actions ; le workflow utilise `actions/checkout`, `dtolnay/rust-toolchain@stable`, `Swatinem/rust-cache@v2` et exécute `cargo build --locked --all-targets` sur `ubuntu-latest`, `macos-latest` et `windows-latest` ; validations locales réussies avec inspection du fichier, contrôle de présence des trois runners et validation syntaxique YAML via `ruby -e 'require "yaml"; YAML.load_file(".github/workflows/build.yml")'`.
-- Remarque 10.1 : le workflow est prêt dans le dépôt local, mais son exécution réelle dans l’onglet GitHub Actions n’a pas encore été observée dans ce chat ; la confirmation finale côté GitHub devra être faite après push, sans jamais coller ni exposer de token GitHub dans le terminal, le code, un commit ou ChatGPT.
+- Étape 10.2 validée : le site web testnet repose sur le binaire existant `prims-explorer`, enrichi en mini portail `Prims Testnet` avec informations du nœud, validateurs, commitments anonymes, recherche de solde, instructions de démarrage et faucet web ; sans secret configuré, le faucet reste explicitement désactivé et refuse proprement les demandes.
+- Remarque sécurité 10.2 : ne jamais commiter ni afficher une vraie clé privée faucet ; utiliser de préférence `PRIMS_SECRET_KEY_FILE` pointant vers un fichier local hors dépôt, ou à défaut `PRIMS_SECRET_KEY_HEX` uniquement pour des clés de test jetables.
+- Sauvegardes locales créées pendant l étape 10.2 :
+  - `~/Documents/prims_sources/step-10.2/prims-explorer.rs.before_step_10_2`
+  - `~/Documents/prims_sources/step-10.2/README.md.before_step_10_2`
+  - `~/Documents/prims_sources/step-10.2/journal_avancement.md.before_step_10_2`
+  - `~/Documents/prims_sources/step-10.2/prims-explorer.rs.after_step_10_2`
+  - `~/Documents/prims_sources/step-10.2/README.md.after_step_10_2`
+  - `~/Documents/prims_sources/step-10.2/journal_avancement.md.after_step_10_2`
+- Sauvegardes locales créées pendant l’étape 10.1 :
+  - `~/Documents/prims_sources/step-10.1/.gitignore.before_first_commit`
+  - `~/Documents/prims_sources/step-10.1/Cargo.lock.before_rustls_webpki_update`
+  - `~/Documents/prims_sources/step-10.1/storage_benchmark.rs.before_fix_step_10_1`
+  - `~/Documents/prims_sources/step-10.1/audit.yml.before_ignore_rustsec_2025_0055`
+- Étape 10.1 validée : ajout de `.github/workflows/build.yml` pour builder automatiquement Prims sur Linux, macOS et Windows avec une matrice GitHub Actions ; le workflow utilise `actions/checkout`, `dtolnay/rust-toolchain@stable`, `Swatinem/rust-cache@v2` et exécute `cargo build --locked --all-targets` sur `ubuntu-latest`, `macos-latest` et `windows-latest` ; un premier run GitHub a mis en évidence deux points à corriger : `benches/storage_benchmark.rs` ne suivait plus les champs `tx_type`, `source_shard`, `destination_shard` et `receipts`, et `Cargo.lock` devait être mis à jour pour `rustls-webpki 0.103.10` ; après correction, commit `b2b883d` et push sur `main`, les trois jobs GitHub de build sont passés au vert.
+- Remarque 10.1 : le push initial `b5a3906` a envoyé l’ensemble du projet déjà présent localement, pas seulement 10.1 ; les commits suivants `b2b883d` et `33263af` n’ont poussé que les correctifs incrémentaux ; le workflow séparé `Security Audit` a été remis au vert avec `cargo audit --ignore RUSTSEC-2025-0055`, car `ark-relations 0.5.1` impose encore `tracing-subscriber ^0.2` et aucune mise à jour amont corrigée n’est disponible à ce stade ; les avertissements non bloquants `bincode`, `derivative` et `paste` restent à surveiller.
 - Sauvegardes locales créées avant l’étape 9.13 :
   - `~/Documents/prims_sources/step-9.13/vm.mod.rs.before_step_9_13`
   - `~/Documents/prims_sources/step-9.13/rpc_api.rs.before_step_9_13`
