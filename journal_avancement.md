@@ -126,14 +126,16 @@ Dernière mise à jour : 28 mars 2026
 
 - [x] 10.3 : seed node public finalisé avec lecture de `PRIMS_EXTERNAL_ADDRESS` dans `src/network/config.rs`, annonce de l adresse publique via `swarm.add_external_address(...)` dans `src/network/node.rs`, prise en charge d une identité réseau persistante via `PRIMS_NETWORK_SECRET_KEY_FILE` / `PRIMS_NETWORK_SECRET_KEY_HEX`, et affichage `External address` au démarrage dans `src/main.rs` ; validations locales réussies avec `cargo fmt`, `cargo fmt --check`, `cargo build --bin prims`, réponse RPC correcte sur `http://127.0.0.1:7002` et redémarrage confirmant un `PeerId` stable grâce à une clé locale hors dépôt.
 
+- [x] 10.4 : programme de bug bounty testnet documenté dans `docs/bug_bounty.md` avec objectif, canal de signalement, périmètre, hors périmètre, règles de test, catégories de sévérité (`Critique`, `Haute`, `Moyenne`, `Faible`) et récompenses proposées en `PRIMS` ; `README.md` enrichi dans la section `Documentation` avec le lien `docs/bug_bounty.md` ; revue Git finale effectuée sans secret ni clé sensible ; commit `4156457` (`docs(security): add bug bounty program for step 10.4`) créé puis poussé avec succès sur `origin/main`, vérification confirmée avec `HEAD` local = `origin/main`.
+
 ## Prochaine étape
-10.4 – Finaliser le programme de bug bounty : revue Git, vérification finale des fichiers, mise à jour du journal, commit, push GitHub sur `main`, vérification du push, puis sauvegarde locale.
+10.5 – Tests de charge : déployer des nœuds sur des VPS, lancer des scripts de transactions massives (milliers de TPS).
 
 ## Notes importantes
 - Sauvegardes locales créées pendant l’étape 10.4 :
   - `~/Documents/prims_sources/step-10.4/README.md.before_step_10_4`
 - Étape 10.3 clôturée Git/GitHub : commit `f4dd47c` (`feat(network): finalize public seed node for step 10.3`) créé puis poussé avec succès sur `origin/main`, vérification confirmée avec `HEAD` local = `origin/main`, et sauvegardes finales créées dans `~/Documents/prims_sources/step-10.3/`.
-- Étape 10.4 démarrée localement mais pas encore clôturée Git/GitHub : création de `docs/bug_bounty.md` avec objectif, canal de signalement, périmètre, hors périmètre, règles de test, catégories de sévérité (`Critique`, `Haute`, `Moyenne`, `Faible`) et récompenses proposées en `PRIMS`, plus ajout du lien `docs/bug_bounty.md` dans la section `Documentation` de `README.md` ; revue locale du contenu effectuée, sans secret ni clé sensible.
+- Étape 10.4 clôturée Git/GitHub : `docs/bug_bounty.md` ajouté pour documenter le programme de bug bounty testnet (objectif, canal de signalement, périmètre, hors périmètre, règles de test, catégories de sévérité `Critique` / `Haute` / `Moyenne` / `Faible` et récompenses proposées en `PRIMS`), `README.md` mis à jour dans la section `Documentation`, puis commit `4156457` (`docs(security): add bug bounty program for step 10.4`) poussé avec succès sur `origin/main` ; vérification confirmée avec `HEAD` local = `origin/main`, sans secret ni clé sensible dans les fichiers validés.
 - Adresse seed node publique observée le 27 mars 2026 : `/ip4/81.65.115.118/tcp/7001/p2p/12D3KooWHAyUEv4HXap4rF7FLmdHJUv9VZ3grWspF95fAtfcw4P1`.
 - Remarque sécurité 10.3 : ne jamais commiter, afficher ni partager le contenu de `~/Documents/prims_secrets/prims_network_identity.hex` ; conserver ce fichier local hors dépôt avec permissions `600`.
 - Sauvegardes locales créées pendant l’étape 10.3 :
