@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile
     environment:
       PRIMS_LISTEN_ADDRESS: /ip4/0.0.0.0/tcp/7001
-      PRIMS_SEED_NODES: /dns4/shard1/tcp/7001
+      PRIMS_SEED_NODES: ""
     ports:
       - "7002:7001"
     depends_on:
@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     environment:
       PRIMS_LISTEN_ADDRESS: /ip4/0.0.0.0/tcp/7001
-      PRIMS_SEED_NODES: /dns4/shard1/tcp/7001,/dns4/shard2/tcp/7001
+      PRIMS_SEED_NODES: ""
     ports:
       - "7003:7001"
     depends_on:
