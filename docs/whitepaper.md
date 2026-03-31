@@ -116,9 +116,37 @@ Cette progression prudente se retrouve dans la roadmap : d abord le prototype, e
 ## 5. État actuel du projet au 31 mars 2026
 
 ### 5.1 Phases déjà validées
+
+Au 31 mars 2026, les phases 0 a 9 de la roadmap ont ete validees dans le journal d avancement local, ainsi que les etapes 10.1 a 10.7 de la phase testnet et securite intensive. Cela signifie que le projet dispose deja d un socle etendu couvrant l environnement de developpement, le reseau P2P, les structures blockchain, le stockage, la cryptographie, le consensus Proof of Stake, la mempool partitionnee, le sharding prototype, la confidentialite optionnelle, les outils RPC/CLI/explorateur, l execution de smart contracts Wasm et une premiere sequence testnet orientee securite.
+
+La phase 10 n est toutefois pas terminee. Au moment de rediger ce whitepaper, l etape 10.8 est en cours, tandis que 10.9 et 10.10 restent encore a finaliser avant de considerer la preparation du mainnet comme suffisamment documentee et durcie.
+
 ### 5.2 Niveau de maturité actuel
+
+Prims se trouve aujourd hui a un niveau de maturite que l on peut qualifier de prototype avance en preparation testnet/mainnet, mais pas encore de reseau de production pret pour un lancement public large. Le code couvre deja de nombreuses briques importantes et a fait l objet de validations locales, de benchmarks et de durcissements successifs.
+
+En pratique, cela signifie que Prims a deja depasse le simple stade conceptuel ou demonstratif. Le projet dispose d une architecture executable, de tests, d outils utilisateurs et developpeurs, d une base documentaire, d une CI multi-OS et d une phase de securite deja engagee. En revanche, il reste encore du travail de formalisation, de documentation, de tutoriels et de derniers audits avant qu un discours de preparation mainnet puisse etre considere comme complet.
+
 ### 5.3 Ce qui est démontré par tests et benchmarks
+
+L etat actuel du projet ne repose pas uniquement sur des intentions de roadmap. Plusieurs proprietes ont deja ete demontrees par tests ou benchmarks :
+- propagation reseau locale validee avec une latence mesuree de 1 ms sur cluster local pour le message de test ;
+- stockage RocksDB valide avec ecriture de 10 000 blocs autour de 81.491 a 87.848 ms et lecture autour de 14.040 a 15.869 ms dans le benchmark dedie ;
+- finalisation PoS benchmarkee sous l objectif cible local du prototype ;
+- mempool partitionnee et traitement parallele valides localement avec un benchmark au-dessus de 10 000 TPS, mesure a 10497.90 TPS ;
+- benchmark multi-shards local sous Docker montrant une montee progressive du debit publie entre 1, 2 et 3 shards ;
+- confidentialite optionnelle prototypee avec generation de preuve zk mesuree autour de 1.56 s et verification autour de 1.18 ms sur le benchmark dedie ;
+- execution Wasm benchmarkee autour de 0.201 ms pour un appel simple de contrat ;
+- validations de securite ciblees sur le reseau, le consensus, le sharding, la confidentialite, l API RPC et la VM Wasm ;
+- validation globale de l etape 10.7 avec une suite de tests reussie sur la bibliotheque, le CLI et le RPC.
+
+Ces resultats doivent etre interpretes comme des preuves de faisabilite et de robustesse sur l etat actuel du prototype, non comme des garanties de comportement deja confirmees en environnement mainnet ouvert.
+
 ### 5.4 Ce qui reste avant le mainnet
+
+Avant toute preparation finale du mainnet, plusieurs chantiers restent explicitement ouverts dans la roadmap. D abord, le whitepaper doit etre finalise a l etape 10.8. Ensuite, l etape 10.9 doit completer la documentation du code et les tutoriels developpeur/utilisateur. Enfin, l etape 10.10 doit mener une derniere sequence d audits et de tests de penetration.
+
+Au-dela de la phase 10, la phase 11 reste encore a executer : gel du code cible mainnet, formalisation du genesis, definition finale des parametres de lancement, demarrage avec validateurs de confiance, ouverture progressive au public et gouvernance plus complete. En consequence, le statut correct de Prims au 31 mars 2026 n est ni "idee", ni "mainnet pret", mais "prototype avance en cours de consolidation avant les dernieres etapes de preparation mainnet".
 
 ---
 
