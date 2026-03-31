@@ -8,7 +8,11 @@ Date : 31 mars 2026
 
 ## 1. Résumé exécutif
 
-> À rédiger en dernier, quand tout le document sera stabilisé.
+Prims est un projet de blockchain nouvelle generation visant a combiner haut debit, finalite rapide, securite, simplicite d usage, confidentialite optionnelle et execution de smart contracts Wasm dans une architecture coherente. Le projet repose sur un socle technique en Rust comprenant deja un reseau P2P, un stockage persistant, une validation cryptographique, un consensus Proof of Stake, une mempool partitionnee, un sharding prototype, une couche de confidentialite optionnelle, une API JSON-RPC, un explorateur, un CLI et un runtime Wasm.
+
+Au 31 mars 2026, Prims ne doit toutefois pas etre presente comme un reseau mainnet deja pret ou deja deployee en production ouverte. Le statut correct est celui d un prototype avance en preparation testnet/mainnet, avec de nombreuses validations locales, benchmarks, durcissements securite, automatisations CI et travaux documentaires deja realises, mais avec encore des etapes importantes a finaliser avant la phase mainnet.
+
+Le present whitepaper a pour objectif de decrire de facon rigoureuse l etat reel du projet, ses choix techniques, ses fonctionnalites deja validees, ses limites actuelles, sa tokenomics proposee, sa trajectoire de gouvernance et la suite de sa roadmap. Il sert donc a clarifier la difference entre ce qui est deja demontre dans le code et ce qui reste encore a consolider dans les etapes 10.9, 10.10 et 11.
 
 ---
 
