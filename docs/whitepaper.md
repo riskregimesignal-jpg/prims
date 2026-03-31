@@ -435,5 +435,56 @@ La suite correcte du projet reste celle de la roadmap : finaliser proprement le 
 ## 14. Annexes
 
 ### 14.1 Choix techniques retenus
+
+Les choix techniques actuellement retenus dans le projet sont les suivants :
+- langage principal : Rust ;
+- reseau P2P : libp2p avec gossipsub, kademlia, noise et mplex ;
+- stockage persistant : RocksDB ;
+- cryptographie : ed25519-dalek pour les signatures, sha2 pour le hash, arkworks pour les zk-SNARKs ;
+- consensus : Proof of Stake maison avec votes BFT et slashing ;
+- sharding : beacon chain, comites de validateurs et protocole cross-shard ;
+- smart contracts : WebAssembly via Wasmtime, avec cible multi-langages cote contrats ;
+- API et interface : JSON-RPC via jsonrpsee, explorateur via axum, CLI via clap ;
+- tests et benchmarks : cargo test, cargo bench et Criterion.
+
+Ces choix doivent etre lus comme les fondations techniques du prototype actuel. Ils peuvent encore etre precises ou ajustes dans les phases suivantes, mais ils constituent deja le socle de travail effectivement utilise dans le projet.
+
 ### 14.2 Résumé des validations importantes
+
+Parmi les validations importantes deja obtenues dans le projet :
+- resistance reseau de base confirmee avec rejet propre d un spam de connexions TCP/handshakes invalides ;
+- stockage RocksDB benchmarke sur 10 000 blocs avec ecriture autour de 81.491 a 87.848 ms et lecture autour de 14.040 a 15.869 ms ;
+- integrite des donnees critiques renforcee par checksum et tests de corruption ;
+- finalisation Proof of Stake benchmarkee sous l objectif local du prototype et resilience byzantine validee a 67% contre 33% ;
+- debit local de la mempool partitionnee valide au-dessus de 10 000 TPS, avec 10497.90 TPS observes ;
+- benchmark multi-shards local sous Docker montrant une progression du debit publie de 53.73 TPS a 169.35 TPS entre 1 et 3 shards ;
+- confidentialite optionnelle benchmarkee avec generation de preuve Groth16 autour de 1.56 s et verification autour de 1.18 ms ;
+- API publique durcie pour ne plus exposer certains champs sensibles ;
+- execution Wasm benchmarkee autour de 0.201 ms pour un appel simple ;
+- runtime Wasm durci contre boucle infinie, epuisement de fuel et acces memoire hors limites avec rollback atomique ;
+- phase 10.1 a 10.7 deja validee avec CI multi-OS, explorateur testnet, seed node public, bug bounty, tests de charge, simulations de pannes et audit interne consolide.
+
+Ces validations ne suffisent pas encore a conclure a une preparation mainnet complete, mais elles etablissent une base de faisabilite et de robustesse deja significative pour le prototype actuel.
+
 ### 14.3 Terminologie du projet
+
+Quelques termes structurants utilises dans ce whitepaper :
+- `libp2p` : pile reseau pair-a-pair utilisee pour la communication entre noeuds ;
+- `Gossipsub` : mecanisme de diffusion de messages par topics dans le reseau P2P ;
+- `Kademlia` : mecanisme de decouverte et de routage de pairs ;
+- `PeerId` : identifiant reseau d un noeud libp2p ;
+- `RocksDB` : moteur de stockage persistant utilise par le noeud ;
+- `Merkle root` : empreinte resumee d un ensemble de transactions ou de notes ;
+- `validator` : acteur participant au consensus avec un stake ;
+- `stake` / `unstake` : verrouillage ou retrait de participation economique dans le consensus ;
+- `mempool partitionnee` : organisation des transactions en partitions logiques pour le traitement parallele ;
+- `shard` : sous-ensemble logique du systeme traitant une partie de l etat ou des transactions ;
+- `beacon chain` : couche de coordination des shards et de certains elements de finalite globale ;
+- `cross-shard` : transaction ou validation impliquant plusieurs shards ;
+- `zk-SNARK` / `Groth16` : systeme de preuve utilise dans la couche de confidentialite optionnelle ;
+- `JSON-RPC` : interface d appels exposee par le noeud pour les clients et outils ;
+- `Wasm` / `Wasmtime` : format d execution des smart contracts et moteur runtime associe ;
+- `DAO` : forme de gouvernance on-chain visee a long terme par le projet ;
+- `genesis` : bloc et parametres initiaux du reseau au lancement mainnet.
+
+Cette terminologie correspond a l etat reel du projet et a ses documents actuels. Elle sert a conserver un vocabulaire stable entre le whitepaper, le journal d avancement et la roadmap.
