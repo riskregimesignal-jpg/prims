@@ -341,9 +341,28 @@ Ce qui reste encore a formaliser avant le mainnet :
 ## 10. Gouvernance
 
 ### 10.1 Gouvernance visée à long terme
+
+Dans la vision du projet, Prims vise une gouvernance de type DAO. Cette orientation apparait deja dans la presentation du projet, avec l idee d une tresorerie DAO et d une gouvernance progressive du reseau. L objectif de long terme est donc que les grandes evolutions du protocole, de la tresorerie et des regles collectives ne reposent pas durablement sur un controle centralise unique.
+
+Cette cible doit toutefois etre lue comme une direction strategique de long terme, pas comme une realite deja deployee dans le prototype actuel.
+
 ### 10.2 Place de la DAO dans la roadmap
+
+La roadmap situe explicitement la gouvernance on-chain en phase 11. Elle prevoit d abord la definition des parametres du bloc genesis, le lancement du reseau avec un petit groupe de validateurs de confiance, puis l ouverture plus large au public. L implementation de la gouvernance on-chain DAO et le transfert progressif du controle a cette DAO interviennent ensuite, pas avant.
+
+Cela signifie que la DAO n est pas un composant a considerer comme deja actif dans l etat courant du projet. Elle appartient encore au chemin de maturation qui suit la finalisation de la phase 10 et la preparation du mainnet.
+
 ### 10.3 État actuel
+
+Au 31 mars 2026, l etat actuel du projet correspond encore a l etape 10.8 en cours. Le prototype dispose deja de briques techniques importantes, d un cadre documentaire en cours de consolidation et d une preparation testnet/mainnet serieuse, mais pas encore d une gouvernance on-chain deployee.
+
+En pratique, cela signifie qu il existe deja une intention claire de decentralisation progressive et de transfert futur de controle, mais que les mecanismes concrets de vote on-chain, de tresorerie DAO et de gouvernance protocolaire restent a implementer et a formaliser dans les etapes ulterieures.
+
 ### 10.4 Transition progressive vers le mainnet
+
+La transition de gouvernance envisagee par Prims est volontairement progressive. Le projet ne cherche pas a declarer une gouvernance totalement decentralisee avant d avoir termine le whitepaper, la documentation, les derniers audits, la definition du genesis et les conditions initiales de lancement du reseau.
+
+Cette prudence est coherente avec le reste du projet : d abord consolider le prototype, ensuite finaliser la preparation testnet/mainnet, puis seulement deplacer progressivement le centre de gravite du controle vers des mecanismes plus ouverts et plus communautaires. La gouvernance doit donc etre comprise comme une trajectoire de livraison et de maturation, pas comme un statut deja atteint.
 
 ---
 
