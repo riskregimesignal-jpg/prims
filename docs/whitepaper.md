@@ -76,11 +76,40 @@ Cinquieme axe : une progression prudente et verifiable. Le projet avance par eta
 ## 4. Principes de conception
 
 ### 4.1 Performance
+
+La performance constitue un objectif directeur de Prims, mais elle est abordee comme une construction progressive et verifiable, pas comme une promesse marketing de court terme. La roadmap vise une architecture capable de monter en charge par partitionnement logique puis par sharding complet, avec reduction de la congestion, finalite rapide et execution parallele.
+
+Dans l etat actuel du prototype, cette orientation se traduit deja par plusieurs choix concrets : mempool partitionnee, logique de parallellisme, benchmark local de debit eleve, consensus de shard prototype et transactions cross-shard preparees. Cela ne signifie pas encore que Prims delivre aujourd hui la capacite finale visee sur un reseau public ouvert, mais que la base technique a ete pensee pour evoluer dans cette direction.
+
 ### 4.2 Sécurité
+
+La securite prime sur la vitesse de livraison. Prims avance par durcissements successifs : validation cryptographique des transactions, verification des signatures, protections anti-replay, limites de taille, tests de rollback Wasm, controle des votes, protections sur le sharding, checksums de stockage et audits documentes.
+
+Ce principe implique qu une fonctionnalite n est pas consideree mature uniquement parce qu elle compile ou fonctionne dans un cas heureux. Elle doit aussi etre accompagnee de tests cibles, de verifications de non-regression et, lorsque necessaire, d un durcissement documentaire et operationnel. L etape 10.7 a renforce explicitement cette approche avant la redaction du whitepaper.
+
 ### 4.3 Simplicité d usage
+
+Prims cherche a rester lisible et utilisable, y compris pour des usages non experts. Cela se traduit par un outillage explicite avec CLI, API JSON-RPC, explorateur web, documentation technique et procedures de validation etape par etape.
+
+La simplicite visee n est pas celle d un systeme minimaliste, mais celle d un systeme complexe rendu exploitable par une structure claire. Dans le prototype actuel, cela passe deja par des commandes dediees, une separation nette des composants et une documentation qui distingue ce qui existe deja de ce qui reste en preparation.
+
 ### 4.4 Extensibilité
+
+Le projet est pense comme une architecture modulaire. Les couches reseau, stockage, consensus, confidentialite, API, smart contracts et sharding sont separees en modules, ce qui facilite l evolution progressive sans devoir reconstruire l ensemble a chaque etape.
+
+Cette extensibilite est essentielle parce que Prims ne pretend pas etre fige. Le prototype actuel constitue un socle technique evolutif. Les choix retenus, comme Rust, libp2p, RocksDB, Wasm et JSON-RPC, servent autant la robustesse immediate que la capacite a ajouter ou faire evoluer des fonctions dans les phases suivantes.
+
 ### 4.5 Confidentialité optionnelle
+
+Prims adopte un principe de confidentialite optionnelle plutot qu une confidentialite universelle imposee. L objectif est de permettre la coexistence de transactions publiques et de transactions anonymes, avec des mecanismes de conversion entre les deux modeles selon les besoins.
+
+Ce principe est important pour conserver a la fois auditabilite, flexibilite et respect de cas d usage differents. Dans le prototype actuel, cette approche est deja visible avec l introduction d un modele anonyme distinct, de notes, d arbres de Merkle, de preuves zk-SNARKs et de conversions public/anon. Cela reste toutefois une zone qui devra encore etre eprouvee avant tout usage de production.
+
 ### 4.6 Décentralisation progressive
+
+La decentralisation est une cible structurelle, mais elle est abordee de facon progressive. Prims ne cherche pas a declarer une decentralisation totale avant que le reseau, les outils, la securite et la gouvernance ne soient suffisamment prepares.
+
+Cette progression prudente se retrouve dans la roadmap : d abord le prototype, ensuite le testnet, puis les audits, la documentation, la preparation du mainnet et enfin la mise en place plus complete de la gouvernance. Le principe est simple : ne pas annoncer comme decentralise et pret un systeme qui est encore en cours de stabilisation.
 
 ---
 
