@@ -25,9 +25,51 @@ Le document ne doit pas présenter comme déjà disponible une fonctionnalité q
 ## 3. Vision et proposition de valeur
 
 ### 3.1 Vision
+
+Prims vise la construction d une infrastructure blockchain publique capable de combiner haut debit, finalite rapide, securite, simplicite d usage et confidentialite optionnelle. L ambition long terme est de fournir une base technique suffisamment performante pour supporter des paiements, des applications decentralisees et des usages inter-shards sans reproduire les congestions, les frais eleves et les mecanismes d ordre preferentiel observes sur de nombreux reseaux historiques.
+
+Cette vision doit toutefois etre lue avec une distinction claire entre cible et realite actuelle. Au 31 mars 2026, Prims est un prototype Rust avance, fortement teste en local, avec une preparation testnet deja engagee, mais pas encore un reseau mainnet ouvert ni un systeme declare pret pour la production a grande echelle.
+
 ### 3.2 Problèmes visés
+
+Prims cherche a traiter plusieurs limites recurrentes des systemes existants :
+- debit insuffisant et congestion lors de la montee en charge ;
+- frais variables ou eleves selon la demande ;
+- priorisation par frais qui favorise les comportements opportunistes ;
+- exposition aux mecanismes de MEV, de front-running et d attaques sandwich ;
+- difficultes de passage a l echelle sans degrader l experience developpeur ;
+- manque d options natives pour concilier transparence publique et confidentialite selective ;
+- fragmentation entre couche de paiement, couche smart contracts et architectures multi-shards.
+
+Dans l etat actuel du projet, tous ces problemes ne sont pas encore resolus a l echelle d un reseau public ouvert. En revanche, plusieurs briques techniques ont deja ete prototypees, testees et benchmarkees pour preparer une reponse coherente a ces limites.
+
 ### 3.3 Positionnement de Prims
+
+Prims se positionne aujourd hui comme un projet de blockchain nouvelle generation en cours de maturation, construit en Rust, avec les choix structurants suivants deja presents dans le prototype :
+- un reseau P2P base sur libp2p ;
+- un stockage RocksDB ;
+- un consensus Proof of Stake avec votes pondérés et logique de finalisation ;
+- une mempool partitionnee et un travail explicite sur le parallellisme ;
+- une architecture de sharding prototypee ;
+- une confidentialite optionnelle basee sur des zk-SNARKs ;
+- une execution de smart contracts WebAssembly ;
+- une interface outillee via JSON-RPC, CLI et explorateur web.
+
+Ce positionnement reste volontairement pragmatique : Prims ne pretend pas, a ce stade, etre deja un reseau de production. Le projet se situe dans une phase de preparation testnet/mainnet, avec un socle technique deja large, des validations locales nombreuses, et une progression encore gouvernee par la roadmap.
+
 ### 3.4 Différenciation recherchée
+
+La differenciation recherchee par Prims repose sur plusieurs axes.
+
+Premier axe : le parallellisme. La roadmap vise une architecture shardee et extensible, tandis que le prototype actuel a deja valide des briques de mempool partitionnee, de consensus de shard et de transactions cross-shard.
+
+Deuxieme axe : une reduction des asymetries d execution. Le projet cherche a limiter les effets de priorisation par frais et les abus d ordre de transaction. A ce jour, le prototype applique deja des frais fixes et ne donne pas de priorite par frais dans la mempool.
+
+Troisieme axe : la confidentialite optionnelle. Prims ne vise pas une opacite totale par defaut, mais une coexistence entre transactions publiques et transactions anonymes, avec passerelles entre les deux modeles. Cette orientation est deja prototypee dans le code, meme si elle doit encore etre durcie et eprouvee davantage avant toute mise en production.
+
+Quatrieme axe : l unification de plusieurs couches dans un meme systeme. Prims cherche a reunir paiements, smart contracts Wasm, sharding et outillage utilisateur/developpeur dans une architecture coherente, au lieu d empiler des composants heterogenes sans ligne directrice commune.
+
+Cinquieme axe : une progression prudente et verifiable. Le projet avance par etapes validees, avec tests, benchmarks, audits documentes, commits traces et sauvegardes locales. Cette discipline constitue elle-meme un element de differenciation important par rapport a des annonces purement speculatives.
 
 ---
 
