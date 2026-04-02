@@ -24,7 +24,8 @@ Il ne modifie pas la branche `mainnet` gelee ; il prepare le lancement depuis `m
 - adresse_tresorerie_dao : d403157cba50b5eea5952aa89a6a37f78fa7424616d7a987f9acc0d72135dd78
 - adresse_fondateur : 6a205fb96318fc7027f827608a91908910b81945b0f6843acabccf0556f3efb3
 - adresses_premiers_contributeurs : A_DEFINIR
-- adresses_validateurs_initiaux : A_DEFINIR
+- adresses_validateurs_initiaux :
+  - validator_01 = a6f4c49dd4f505bc267b838685abfb30d6273ed2ade3752f090fe86e32be51b3
 
 - tresorerie DAO sous garde temporaire du fondateur jusqu a l implementation de la gouvernance on-chain.
 
