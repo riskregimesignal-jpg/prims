@@ -145,6 +145,8 @@ Dernière mise à jour : 2 avril 2026
 
 ## Notes importantes
 
+- Étape 11.2 démarrée le 2 avril 2026 : création du document `docs/genesis_parameters.md` pour formaliser l offre totale cible (1_000_000_000 PRIMS), la répartition initiale (60% staking, 20% trésorerie DAO, 10% premiers contributeurs, 10% fondateur), les principes de traçabilité, et les catégories d adresses initiales à définir ; `README.md` mis à jour pour référencer ce document ; étape non clôturée tant que les adresses initiales exactes et la traduction exécutable du genesis ne sont pas verrouillées.
+
 - Étape 11.1 validée le 2 avril 2026 : branche `mainnet` créée localement depuis `main` au commit gelé `eb8b143dc2ba410ef871e65b2760ee22c498b81b`, puis poussée sur GitHub en `origin/mainnet` ; la branche `main` reste la branche de travail pour documenter et réaliser l étape 11.2.
 
 

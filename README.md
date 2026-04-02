@@ -82,6 +82,7 @@ cargo run --bin prims
 - Suivi des constats d audit : `docs/security_audit_findings.md`
 - Plan d audit interne : `docs/security_internal_audit_plan.md`
 - Tests de charge : `docs/load_testing.md`
+- Parametres du bloc genesis : `docs/genesis_parameters.md`
 
 
 ## Site web testnet
