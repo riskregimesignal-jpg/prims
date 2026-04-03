@@ -140,10 +140,14 @@ Dernière mise à jour : 3 avril 2026
 
 - [x] 11.1 : code gelé sur une branche `mainnet`, créée localement depuis `main` au commit `eb8b143dc2ba410ef871e65b2760ee22c498b81b`, puis poussée sur GitHub en `origin/mainnet` ; la branche `main` est conservée pour le suivi documentaire et la préparation de l étape 11.2.
 
+- [x] 11.2 : paramètres du bloc genesis définis et documentés dans `docs/genesis_parameters.md` avec offre totale `1_000_000_000 PRIMS`, répartition `600_000_000` staking / `200_000_000` trésorerie DAO / `100_000_000` contributors_pool / `100_000_000` fondateur, adresses publiques initiales dédiées (`staking_rewards_reserve`, `treasury_dao`, `founder`, `contributors_pool`) et premier validateur initial `validator_01`, plus tableau explicite des allocations genesis par adresse ; validation de cohérence réussie avec `allocation_count = 4`, `allocation_sum = 1000000000` et tous les contrôles à `True`.
+
 ## Prochaine étape
-11.2 – Définir les paramètres du bloc genesis.
+11.3 – Lancer le réseau avec un petit groupe de validateurs de confiance.
 
 ## Notes importantes
+
+- Étape 11.2 validée le 3 avril 2026 : `docs/genesis_parameters.md` verrouille désormais les paramètres documentaires du genesis (offre totale, répartition, adresses publiques initiales, tableau d allocations, premier validateur `validator_01`) ; contrôle final réussi avec `allocation_count = 4`, `allocation_sum = 1000000000`, `has_staking_reserve = True`, `has_dao_treasury = True`, `has_founder = True`, `has_contributors_pool = True`, `has_validator_01 = True` et `has_allocation_table = True` ; prochaine étape fixée à 11.3.
 
 - Étape 11.2 avancée le 3 avril 2026 : `docs/genesis_parameters.md` formalise désormais l offre totale cible (1_000_000_000 PRIMS), la répartition initiale (60% staking, 20% trésorerie DAO, 10% premiers contributeurs, 10% fondateur), l adresse publique de réserve de récompenses staking (`f05cc9b4dc41201ed051c41a9949e0287b04298214db828e6f32f8ec1aa5ca06`), l adresse publique de trésorerie DAO (`d403157cba50b5eea5952aa89a6a37f78fa7424616d7a987f9acc0d72135dd78`), l adresse publique fondateur (`6a205fb96318fc7027f827608a91908910b81945b0f6843acabccf0556f3efb3`), le pool public des premiers contributeurs `contributors_pool` (`a16b8019212710fdde06fc3456aa9cc910a5338bfacbd2df08441d13943530e0`), le premier validateur initial `validator_01` (`a6f4c49dd4f505bc267b838685abfb30d6273ed2ade3752f090fe86e32be51b3`), ainsi qu un tableau explicite d allocations genesis par adresse (600M staking, 200M trésorerie DAO, 100M contributors_pool, 100M fondateur) et le rôle initial documentaire du validateur pour l étape 11.3 ; la garde temporaire de la trésorerie DAO par le fondateur reste documentée jusqu a l implementation de la gouvernance on-chain ; `README.md` référence ce document ; étape non clôturée tant que la répartition interne des premiers contributeurs, la liste finale des validateurs de confiance et la traduction exécutable du genesis ne sont pas verrouillées.
 
