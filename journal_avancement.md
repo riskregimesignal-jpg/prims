@@ -153,9 +153,7 @@ Dernière mise à jour : 3 avril 2026
 
 - Étape 11.1 validée le 2 avril 2026 : branche `mainnet` créée localement depuis `main` au commit gelé `eb8b143dc2ba410ef871e65b2760ee22c498b81b`, puis poussée sur GitHub en `origin/mainnet` ; la branche `main` reste la branche de travail pour documenter et réaliser l étape 11.2.
 
-
 - Etape 10.10 validee le 1 avril 2026 : campagne finale d audits et de tests de penetration executee sur RPC, VM Wasm, reseau, consensus, sharding, confidentialite, resistance simple au spam TCP et explorateur testnet ; rapport final ajoute dans docs/security_pentest_10_10.md ; prochaine etape fixee a 11.1 - Geler le code sur une branche mainnet.
-
 
 - Étape 10.9 validée le 1 avril 2026 : rustdoc de tête ajouté sur les modules publics `src/lib.rs`, `src/network/mod.rs`, `src/blockchain/mod.rs`, `src/storage/mod.rs`, `src/crypto/mod.rs`, `src/consensus/mod.rs`, `src/sharding/mod.rs` et `src/api/mod.rs`, rustdoc HTML généré localement dans `target/doc/prims/index.html`, tutoriels `docs/developer_tutorial.md` et `docs/user_tutorial.md` créés, section `Documentation` du `README.md` enrichie, clôture Git/GitHub réalisée avec le commit `1c20369` (`docs(rustdoc): document public modules and add step 10.9 tutorials`) poussé sur `origin/main`, vérification `HEAD = origin/main` confirmée, et sauvegardes finales créées dans `~/Documents/prims_sources/step-10.9/`.
 
